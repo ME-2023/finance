@@ -4,4 +4,4 @@ pandas
 pydeck
 streamlit
 yfinance
-sklearn
+scikit-learn
