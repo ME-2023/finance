@@ -6,7 +6,7 @@ from datetime import datetime
 # import yfinance as yf
 
 # Current date
-current_date = datetime.today().strftime('%Y/%m/%d')
+current_date = datetime.today().strftime('%Y-%m-%d')
 current_date = str(current_date)
 
 st.write("""
@@ -27,7 +27,7 @@ ticker_symbol = st.selectbox(
     )
 
 st.write(f"You selected {ticker_symbol}")
-st.write(f'From: 2018/01/09 to {current_date}')
+st.write(f'From: 2018-01-09 to {current_date}')
 
 try:
     # Authentication
