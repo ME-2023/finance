@@ -1,27 +1,52 @@
-import yfinance as yf
 import streamlit as st
+import pandas as pd
+import requests
+import json
+# import yfinance as yf
 
 st.write("""
-# Simple Stock Price App
+    ## Composición Merval
+    
+    Empresas que conforman el índice Merval y que cotizan en la 
+    Bolsa de EE.UU. (ADRs)
+                
+    """)
 
-Shown are the stock **closing price** and ***volume*** of Google!
+#ticker_symbol = 'YPF'
+ticker_symbol = st.selectbox(
+    "Select ticker",
+    ["BBAR", "BMA", "CEPU", 
+    "CRESY", "EDN", "GGAL",
+    "LOMA", "PAM", "SUPV", 
+    "TGS", "TX", "YPF"],
+    )
 
-""")
+st.write(f"You selected {ticker_symbol}")
 
-# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
-#define the ticker symbol
-tickerSymbol = 'GOOGL'
-#get data on this ticker
-tickerData = yf.Ticker(tickerSymbol)
-#get the historical prices for this ticker
-tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
-# Open	High	Low	Close	Volume	Dividends	Stock Splits
+try:
+    # Authentication
+    # Pass your API key in the query string like follows:
+    api_url = f'https://api.polygon.io/v2/aggs/ticker/{ticker_symbol}/range/1/day/2018-01-09/2023-10-15?apiKey=LOpAdL70TOrSPQh9t3UaYAFpr2Dq34po'
 
-st.write("""
-## Closing Price
-""")
-st.line_chart(tickerDf.Close)
-st.write("""
-## Volume Price
-""")
-st.line_chart(tickerDf.Volume)
+    # Login, para generar un token
+    # Un token es un identificador único que se le da al usuario para poder realizar las solicitudes necesarias
+
+    response = requests.get(api_url)
+    consulta=response.json()
+
+    df_ypf = pd.DataFrame.from_dict(consulta)
+    df_normalized = pd.json_normalize(df_ypf['results'])
+    df_normalized = df_normalized.rename(columns={'c': 'close', 'o': 'open', 'h': 'high', 'l':'low', 'v': 'volume'})
+
+    st.write("""
+    ## Closing Price
+    """)
+    st.line_chart(df_normalized.close)
+    st.write("""
+    ## Volume Price
+    """)
+    st.line_chart(df_normalized.volume)
+except:
+    st.write(f"No API connection.")
+
+
