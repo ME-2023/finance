@@ -7,6 +7,7 @@ from datetime import datetime
 
 # Current date
 current_date = datetime.today().strftime('%Y/%m/%d')
+current_date = str(current_date)
 
 st.write("""
     ## Composición Merval
