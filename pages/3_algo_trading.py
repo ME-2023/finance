@@ -33,8 +33,8 @@ ticker_symbol = st.selectbox(
     "TGS", "TX", "YPF"],
     )
 
-st.write(f"You selected {ticker_symbol}")
-st.write(f'From: 2018-01-09 to {current_date}')
+st.write(f"Ud. seleccionó: {ticker_symbol}")
+st.write(f'Desde: 2018-01-09 hasta: {current_date}')
 
 try:
     # Authentication
@@ -54,14 +54,14 @@ try:
     df_normalized['ma-10'] = df_normalized['ma-10'].fillna(df_normalized['close'])
 
     st.write("""
-    ## Closing Price
+    ## Precio de cierre diario
     """)
     st.line_chart(df_normalized.close)
 except:
     st.write(f"No API connection.")
 
 
-st.write(f"## 10 days moving average algo trading")
+st.write(f"## Trading algorítmico para media móvil de 10 días")
 
 money = investment
 stocks = {'BBAR': 0, 'BMA': 0, 'CEPU': 0, 'CRESY': 0, 'EDN': 0,
@@ -107,14 +107,17 @@ def algo_trading3(df):
                 position = False
                 sell_c(ticker_symbol, row.close)
 
-algo_trading3(df_normalized)
+try:
+    algo_trading3(df_normalized)
 
-taxes = money * taxes / 100
-money -= taxes
+    taxes = money * taxes / 100
+    money -= taxes
 
-st.write(f"Initial investment amount: $ {investment}.")
-#st.write(f"Stocks: {stocks}.")
-st.write(f"Money in account: $ {round(money, 2)}.")
-st.write(f"Amount of money paied in commissions: $ {round(total_commissions, 2)}")
-st.write(f"ADRs: they pay a 15% capital gain rate but not personal assets: $ {round(taxes, 2)}")
-st.write(f"(Dividends have not been included, which also pay taxes)")
+    st.write(f"Inversión inicial: $ {investment}.")
+    #st.write(f"Stocks: {stocks}.")
+    st.write(f"Dinero en cuenta: $ {round(money, 2)}.")
+    st.write(f"Monto de dinero pagado en comisiones: $ {round(total_commissions, 2)}")
+    st.write(f"ADRs: pagan 15% de impuesto Cedular a la renta financiera pero no Bienes Personales: $ {round(taxes, 2)}")
+    st.write(f"(Los Dividendos no han sido incluídos, aunque pagan impuestos.)")
+except:
+    st.write(f"Hubo un fallo en la conexión. Actualice la página.")
