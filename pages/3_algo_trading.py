@@ -12,9 +12,9 @@ current_date = str(current_date)
 # SIDEBAR
 # Interactive Streamlit elements, like these sliders, return their value.
 # This gives you an extremely simple interaction model.
-investment = st.sidebar.slider("Inversión inicial", 100, 10000, 1000, 1)
-commiss = st.sidebar.slider("Comisiones bursátiles", 0.0, 4.0, 0.65)
-tax = st.sidebar.slider("Impuesto a la renta financiera", 0, 50, 15)
+investment = st.sidebar.slider("Inversión inicial (US$)", 100, 10000, 1000, 1)
+commiss = st.sidebar.slider("Comisiones bursátiles (%)", 0.0, 4.0, 0.65)
+taxes = st.sidebar.slider("Impuesto a la renta financiera (%)", 0, 50, 15)
 
 st.write("""
     ## Trading Algorítmico
@@ -63,7 +63,7 @@ except:
 
 st.write(f"## 10 days moving average algo trading")
 
-money = 1000
+money = investment
 stocks = {'BBAR': 0, 'BMA': 0, 'CEPU': 0, 'CRESY': 0, 'EDN': 0,
             'GGAL': 0,'LOMA': 0,'PAM': 0,'SUPV': 0,
             'TGS': 0,'TX': 0,'YPF': 0}
@@ -72,9 +72,10 @@ total_commissions = 0
 def buy_c(stock, close):
     global money
     global total_commissions
+    global commiss
     if money >= close and close > 0:
         n_shares = round(money / close)
-        commission = (close * n_shares) * 0.006
+        commission = (close * n_shares) * (commiss / 100)
         money -= (close * n_shares) - commission
         stocks[stock] += n_shares
         total_commissions += commission
@@ -82,7 +83,8 @@ def buy_c(stock, close):
 def sell_c(stock, close):
     global money
     global total_commissions
-    commission = (stocks[stock] * close) * 0.006
+    global commiss
+    commission = (stocks[stock] * close) * (commiss / 100)
     money += (stocks[stock] * close) - commission
     stocks[stock] = 0
     total_commissions += commission
@@ -107,7 +109,7 @@ def algo_trading3(df):
 
 algo_trading3(df_normalized)
 
-taxes = money * 0.15
+taxes = money * taxes / 100
 money -= taxes
 
 st.write(f"Initial investment amount: $ 1000.")
