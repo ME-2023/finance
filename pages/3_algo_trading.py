@@ -112,7 +112,7 @@ algo_trading3(df_normalized)
 taxes = money * taxes / 100
 money -= taxes
 
-st.write(f"Initial investment amount: $ 1000.")
+st.write(f"Initial investment amount: $ {investment}.")
 #st.write(f"Stocks: {stocks}.")
 st.write(f"Money in account: $ {round(money, 2)}.")
 st.write(f"Amount of money paied in commissions: $ {round(total_commissions, 2)}")
