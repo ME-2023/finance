@@ -9,6 +9,13 @@ from datetime import datetime
 current_date = datetime.today().strftime('%Y-%m-%d')
 current_date = str(current_date)
 
+# SIDEBAR
+# Interactive Streamlit elements, like these sliders, return their value.
+# This gives you an extremely simple interaction model.
+investment = st.sidebar.slider("Inversión inicial", 100, 10000, 1000, 1)
+commiss = st.sidebar.slider("Comisiones bursátiles", 0.0, 4.0, 0.65)
+tax = st.sidebar.slider("Impuesto a la renta financiera", 0, 50, 15)
+
 st.write("""
     ## Trading Algorítmico
     
