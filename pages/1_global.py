@@ -19,15 +19,15 @@ st.write("""
 
 #ticker_symbol = 'YPF'
 ticker_symbol = st.selectbox(
-    "Select ticker",
+    "Seleccionar ticker",
     ["BBAR", "BMA", "CEPU", 
     "CRESY", "EDN", "GGAL",
     "LOMA", "PAM", "SUPV", 
     "TGS", "TX", "YPF"],
     )
 
-st.write(f"You selected {ticker_symbol}")
-st.write(f'From: 2018-01-09 to {current_date}')
+st.write(f"Ud. seleccionó: {ticker_symbol}")
+st.write(f'Desde: 2018-01-09 hasta: {current_date}')
 
 try:
     # Authentication
@@ -45,14 +45,14 @@ try:
     df_normalized = df_normalized.rename(columns={'c': 'close', 'o': 'open', 'h': 'high', 'l':'low', 'v': 'volume'})
 
     st.write("""
-    ## Closing Price
+    ## Precio de cierre (1d)
     """)
     st.line_chart(df_normalized.close)
     st.write("""
-    ## Volume Price
+    ## Volumen
     """)
     st.line_chart(df_normalized.volume)
 except:
-    st.write(f"No API connection.")
+    st.write(f"No se puedo conectar a la API.")
 
 
