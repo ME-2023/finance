@@ -4,15 +4,15 @@ from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
-# Simple Moving Average Prediction App
+# Medias Móviles Trading App
 
-This app predicts the **moving average strategy** result!
+Esta app predice los resultados de una estrategia de trading!
 """)
 
-st.sidebar.header('User Input Parameters')
+st.sidebar.header('Modificar parámetros')
 
 def user_input_features():
-    moving_avg = st.sidebar.slider('Moving average', 10, 100, 10, 10)
+    moving_avg = st.sidebar.slider('Media móvil', 10, 100, 10, 10)
     
     data = {
         'moving_average': moving_avg,
@@ -22,7 +22,7 @@ def user_input_features():
 
 df = user_input_features()
 
-st.subheader('User Input parameters')
+st.subheader('Parámetros ingresados por el usuario')
 st.write(df)
 
 """
@@ -41,7 +41,7 @@ prediction_proba = clf.predict_proba(df)
 st.subheader('Class labels and their corresponding index number')
 #st.write(iris.target_names)
 
-st.subheader('Prediction')
+st.subheader('Predicción')
 #st.write(iris.target_names[prediction])
 #st.write(prediction)
 
