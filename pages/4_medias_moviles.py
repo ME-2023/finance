@@ -13,9 +13,12 @@ st.sidebar.header('Modificar parámetros')
 
 def user_input_features():
     moving_avg = st.sidebar.slider('Media móvil', 10, 100, 10, 10)
-    
+    major_trend = st.sidebar.radio('Tendencia de LP', ('bull', 'bear'))
+
     data = {
-        'moving_average': moving_avg,
+        'Media móvil': moving_avg,
+        'Tendencia de LP': major_trend,
+
     }
     features = pd.DataFrame(data, index=[0])
     return features
@@ -42,8 +45,9 @@ st.subheader('Class labels and their corresponding index number')
 #st.write(iris.target_names)
 
 st.subheader('Predicción')
-#st.write(iris.target_names[prediction])
+st.write(f"El algoritmo logrará alcanzar un 10% de incremento de precios en X días.")
 #st.write(prediction)
 
 st.subheader('Prediction Probability')
+st.write(f"La probabilidad de lograrlo será de X %.")
 #st.write(prediction_proba)
