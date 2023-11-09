@@ -12,7 +12,7 @@ This app predicts the **moving average strategy** result!
 st.sidebar.header('User Input Parameters')
 
 def user_input_features():
-    moving_avg = st.sidebar.slider('Moving average', 10, 100, 10)
+    moving_avg = st.sidebar.slider('Moving average', 10, 100, 10, 10)
     
     data = {
         'moving_average': moving_avg,
