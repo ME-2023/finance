@@ -76,16 +76,16 @@ st.line_chart(df_selected[['close', ma]])
 st.subheader('Análisis en el período seleccionado')
 
 # Assuming apple_daily['days_to_10'] is your data
-data2 = df_selected['days_to_10']
+#data2 = df_selected['days_to_10']
 
 # Create a histogram
-sns.histplot(data2, kde=False, bins=int(np.sqrt(1454)))
+#sns.histplot(data2, kde=False, bins=int(np.sqrt(1454)))
 
 # Use pyplot to generate the plot
-plt.show()
+#plt.show()
 
 # Use Streamlit's pyplot functionality to display the plot
-st.pyplot(plt)
+#st.pyplot(plt)
 
 # iris = datasets.load_iris()
 #X = iris.data
