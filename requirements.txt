@@ -5,5 +5,3 @@ pydeck
 streamlit
 yfinance
 scikit-learn
-seaborn
-matplotlib.pyplot
