@@ -32,13 +32,13 @@ def user_input_features():
     if ticker_symbol == 'AAPL':
         ticker = 'aapl_1d_3.csv'
     if ticker_symbol == 'BAC':
-        ticker = 'bac_1d.csv'
+        ticker = 'bac_1d_3.csv'
     if ticker_symbol == 'AXP':
-        ticker = 'axp_1d.csv'
+        ticker = 'axp_1d_3.csv'
     if ticker_symbol == 'CVX':
-        ticker = 'cvx_1d.csv'
+        ticker = 'cvx_1d_3.csv'
     if ticker_symbol == 'KO':
-        ticker = 'ko_1d.csv'
+        ticker = 'ko_1d_3.csv'
 
     data = {
         'Ticker': ticker_symbol,
@@ -74,6 +74,7 @@ ma = f"ma-{data['Media movil']}"
 st.line_chart(df_selected[['close', ma]])
 
 st.subheader('Análisis en el período seleccionado')
+st.write('Desde: 2018-01-31 hasta: 2023-11-08')
 
 # Assuming apple_daily['days_to_10'] is your data
 #data2 = df_selected['days_to_10']
@@ -97,15 +98,20 @@ st.subheader('Análisis en el período seleccionado')
 #prediction = clf.predict(df)
 #prediction_proba = clf.predict_proba(df)
 
-
-
-st.subheader('Class labels and their corresponding index number')
+#st.subheader('Class labels and their corresponding index number')
 #st.write(iris.target_names)
 
-st.subheader('Predicción')
-st.write(f"El algoritmo logrará alcanzar un 10% de incremento de precios en X días.")
+st.bar_chart(df_selected[['days_to_10']])
+
+st.write('''El gráfico muestra la cantidad de días
+         que son necesarios -en el dataset preseleccionado 
+         para alcanzar una ganancia de 10 puntos porcentuales 
+         a partir del valor de compra.''')
+
+#st.subheader('Predicción')
+#st.write(f"El algoritmo logrará alcanzar un 10% de incremento de precios en X días.")
 #st.write(prediction)
 
-st.subheader('Prediction Probability')
-st.write(f"La probabilidad de lograrlo será de X %.")
+#st.subheader('Prediction Probability')
+#st.write(f"La probabilidad de lograrlo será de X %.")
 #st.write(prediction_proba)
