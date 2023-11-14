@@ -5,9 +5,10 @@ from sklearn.ensemble import RandomForestClassifier
 import requests
 import json
 from datetime import datetime
-#import seaborn as sns
+import seaborn as sns
 #import matplotlib.pyplot as plt
 import numpy as np
+
 
 st.write("""
 # Medias Móviles Trading App
@@ -46,6 +47,8 @@ def user_input_features():
         'Tendencia de LP': major_trend,
     }
     features = pd.DataFrame(data, index=[0])
+
+
     return features
 
 df = user_input_features()
@@ -55,7 +58,6 @@ df = user_input_features()
 df_selected = pd.read_csv(ticker)
 
 # Now 'df_apple' is a DataFrame containing the data from 'aapl_1d.csv'
-
 
 st.subheader('Parámetros ingresados por el usuario')
 st.write(df)
@@ -104,7 +106,7 @@ st.write('Desde: 2018-01-31 hasta: 2023-11-08')
 st.bar_chart(df_selected[['days_to_10']])
 
 st.write('''El gráfico muestra la cantidad de días
-         que son necesarios -en el dataset preseleccionado 
+         que son necesarios -en el dataset preseleccionado- 
          para alcanzar una ganancia de 10 puntos porcentuales 
          a partir del valor de compra.''')
 
