@@ -61,7 +61,7 @@ st.subheader('Parámetros ingresados por el usuario')
 st.write(df)
 
 #st.write(df_apple)
-st.write(df_selected.head(5))
+st.write(df_selected)
 
 st.write("""
 ## Precio de cierre (1d)
