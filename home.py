@@ -11,7 +11,7 @@ def run():
     )
 
     st.write("# MEINPS Finance")
-    st.write("# Data Science Web App")
+    st.write("## Data Science Web App")
     st.write("""
     MEINPS Finance is a project that focuses its efforts on 
     the study of collective economic behavior through AI and 
@@ -35,6 +35,13 @@ def run():
 
     st.markdown("2023")
 
+    st.write("")
+    st.write("")
+
+    st.write("_____________________")
+    st.write("##### MEINPS Project")
+    st.markdown(''':red[Development of Human Potential]''')
+    st.markdown('''Powered by :blue[AI]''')
 
 if __name__ == "__main__":
     run()
