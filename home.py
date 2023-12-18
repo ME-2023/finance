@@ -10,26 +10,25 @@ def run():
         page_icon="",
     )
 
-    st.write("# MEINPS Finanzas")
+    st.write("# MEINPS Finance")
     st.write("# Data Science Web App")
     st.write("""
-    MEINPS Finanzas es un proyecto que centra sus 
-    esfuerzos en el estudio del comportamiento 
-    económico colectivo a través de la IA y la 
-    Ciencia de Datos. Pretende integrar conocimientos 
-    procedentes de diferentes ámbitos del ser humano, 
-    aplicados al comportamiento humano colectivo.
-    
-    MEINPS considera que los aspectos más evolucionados 
-    del ser humano están definidos por procesos 
-    colectivos y que estos tienen una extensión digital. 
-    El ser humano a inicios del siglo XXI tiene un 
-    Comportamiento Colectivo Digital.
+    MEINPS Finance is a project that focuses its efforts on 
+    the study of collective economic behavior through AI and 
+    Data Science. It aims to integrate knowledge from 
+    different domains of the human being, applied to 
+    collective human behavior.
              
-    El fundamento ontológico del accionar del MEINPS se 
-    encuentra en el trabajo cooperativo y empático 
-    entre personas; la base epistemológica se encuentra 
-    en el método científico.
+    MEINPS considers that the most evolved aspects of the 
+    human being are defined by collective processes and that 
+    these have a digital extension. The human being at the 
+    beginning of the 21st century has a Digital Collective 
+    Behavior.
+
+    The ontological foundation of MEINPS's actions is found 
+    in cooperative and empathetic work between people; 
+    the epistemological basis is found in the scientific 
+    method.
     """)
 
     st.sidebar.success("Seleccionar una opción.")
