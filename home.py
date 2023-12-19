@@ -12,6 +12,7 @@ def run():
 
     st.write("# MEINPS Finance")
     st.write("## Data Science Web App")
+    st.write("### :green[HOME]")
     st.write("""
     MEINPS Finance is a project that focuses its efforts on 
     the study of collective economic behavior through AI and 

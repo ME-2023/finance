@@ -9,11 +9,15 @@ from datetime import datetime
 current_date = datetime.today().strftime('%Y-%m-%d')
 current_date = str(current_date)
 
+
+st.write("# MEINPS Finance")
+st.write("## Data Science Web App")
+st.write("### :green[SPECULATIVE MARKETS]")
+
 st.write("""
-    ## Composición Merval
+    ## Argentina: Merval index
     
-    Empresas que conforman el índice Merval y que cotizan en la 
-    Bolsa de EE.UU. (ADRs)
+    Companies that make up the Merval index and are listed on the U.S. Stock Exchange(ADRs)
                 
     """)
 
@@ -52,7 +56,14 @@ try:
     ## Volumen
     """)
     st.line_chart(df_normalized.volume)
+
 except:
     st.write(f"No se puedo conectar a la API.")
 
+st.write("")
+st.write("")
 
+st.write("_____________________")
+st.write("##### MEINPS Project")
+st.markdown(''':red[Development of Human Potential]''')
+st.markdown('''Powered by :blue[AI]''')
