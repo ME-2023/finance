@@ -55,9 +55,24 @@ try:
 
     st.write("### Business analysis")
     st.write("""
-    ...
-    ...
-    ...
+    The example we present is extremely simple, however, it shows how quantitative data 
+    without proper interpretation can bring us an erroneous conclusion and the importance 
+    of understanding the business or market in question.
+             
+    The Merval index expressed in Argentine pesos has a clearly different graph from the 
+    same index expressed in US dollars. In our case study, this difference responds to a 
+    speculative type market, whose intrinsic forces respond to the presence of 
+    operators-speculators oriented towards price fighting and not to the intrinsic value 
+    of the companies that make up the index.
+
+    This strong presence of speculators gives a particular appearance to the market, 
+    such as its volatility and irrationality when trying to understand the prices based on 
+    the intrinsic values ​​of the companies, as we can see in the breakdown tab. Merval 
+    component companies.
+    
+    This qualitative information, which provides us with an interpretation of the dataset, 
+    differentiates the data scientist (who knows the business) from the data analyst 
+    (focused on data presentation).
     """)
 
 except:

@@ -30,8 +30,8 @@ ticker_symbol = st.selectbox(
     "TGS", "TX", "YPF"],
     )
 
-st.write(f"Ud. seleccionó: {ticker_symbol}")
-st.write(f'Desde: 2018-01-09 hasta: {current_date}')
+st.write(f"You selected: {ticker_symbol}")
+st.write(f'From: 2018-01-09 to: {current_date}')
 
 try:
     # Authentication
@@ -49,11 +49,11 @@ try:
     df_normalized = df_normalized.rename(columns={'c': 'close', 'o': 'open', 'h': 'high', 'l':'low', 'v': 'volume'})
 
     st.write("""
-    ## Precio de cierre (1d)
+    ## Close (1d)
     """)
     st.line_chart(df_normalized.close)
     st.write("""
-    ## Volumen
+    ## Volume
     """)
     st.line_chart(df_normalized.volume)
 
