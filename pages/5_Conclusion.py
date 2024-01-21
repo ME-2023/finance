@@ -29,3 +29,11 @@ The results obtained for the target 'days to reach an increase of 10%'
 are found in the tab called 'investment markets'
          
          """)
+
+st.write("")
+st.write("")
+
+st.write("_____________________")
+st.write("##### MEINPS Project")
+st.markdown(''':red[Development of Human Potential]''')
+st.markdown('''Powered by :blue[AI]''')

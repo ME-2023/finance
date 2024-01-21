@@ -116,3 +116,11 @@ st.write('''The graph shows the number of days
 #st.subheader('Prediction Probability')
 #st.write(f"La probabilidad de lograrlo será de X %.")
 #st.write(prediction_proba)
+
+st.write("")
+st.write("")
+
+st.write("_____________________")
+st.write("##### MEINPS Project")
+st.markdown(''':red[Development of Human Potential]''')
+st.markdown('''Powered by :blue[AI]''')
