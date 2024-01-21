@@ -122,3 +122,11 @@ try:
     st.write(f"(Dividends have not been included, although they pay taxes.)")
 except:
     st.write(f"There was a connection failure. Refresh the page.")
+
+st.write("")
+st.write("")
+
+st.write("_____________________")
+st.write("##### MEINPS Project")
+st.markdown(''':red[Development of Human Potential]''')
+st.markdown('''Powered by :blue[AI]''')
