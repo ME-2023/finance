@@ -12,16 +12,16 @@ current_date = str(current_date)
 # SIDEBAR
 # Interactive Streamlit elements, like these sliders, return their value.
 # This gives you an extremely simple interaction model.
-st.sidebar.header('Modificar parámetros')
-investment = st.sidebar.slider("Inversión inicial (US$)", 100, 10000, 1000, 100)
-commiss = st.sidebar.slider("Comisiones bursátiles (%)", 0.0, 4.0, 0.65)
-taxes = st.sidebar.slider("Impuesto a la renta financiera (%)", 0, 50, 15)
+st.sidebar.header('Modify parameters')
+investment = st.sidebar.slider("Investmet (US$)", 100, 10000, 1000, 100)
+commiss = st.sidebar.slider("Taxes (%)", 0.0, 4.0, 0.65)
+taxes = st.sidebar.slider("Financial rent tax (%)", 0, 50, 15)
 
 st.write("""
-    ## Trading Algorítmico
+    ## Algorithmic trading
     
-    Empresas que conforman el índice Merval y que cotizan en la 
-    Bolsa de EE.UU. (ADRs)
+    Companies that make up the Merval index and are listed on the
+    US stock market (ADRs).
                 
     """)
 
@@ -34,8 +34,8 @@ ticker_symbol = st.selectbox(
     "TGS", "TX", "YPF"],
     )
 
-st.write(f"Ud. seleccionó: {ticker_symbol}")
-st.write(f'Desde: 2018-01-09 hasta: {current_date}')
+st.write(f"Selected ticker: {ticker_symbol}")
+st.write(f'From: 2018-01-09 to: {current_date}')
 
 try:
     # Authentication
@@ -55,14 +55,14 @@ try:
     df_normalized['ma-10'] = df_normalized['ma-10'].fillna(df_normalized['close'])
 
     st.write("""
-    ## Precio de cierre diario
+    ## Close (1d)
     """)
     st.line_chart(df_normalized.close)
 except:
     st.write(f"No API connection.")
 
 
-st.write(f"## Trading algorítmico para media móvil de 10 días")
+st.write(f"## Algorithmic Trading for 10 days moving average")
 
 money = investment
 stocks = {'BBAR': 0, 'BMA': 0, 'CEPU': 0, 'CRESY': 0, 'EDN': 0,
@@ -114,11 +114,11 @@ try:
     taxes = money * taxes / 100
     money -= taxes
 
-    st.write(f"Inversión inicial: $ {investment}.")
+    st.write(f"Initial investment: $ {investment}.")
     #st.write(f"Stocks: {stocks}.")
-    st.write(f"Dinero en cuenta: $ {round(money, 2)}.")
-    st.write(f"Monto de dinero pagado en comisiones: $ {round(total_commissions, 2)}")
-    st.write(f"ADRs: pagan 15% de impuesto Cedular a la renta financiera pero no Bienes Personales: $ {round(taxes, 2)}")
-    st.write(f"(Los Dividendos no han sido incluídos, aunque pagan impuestos.)")
+    st.write(f"Money in account: $ {round(money, 2)}.")
+    st.write(f"Amount of money paid in commissions: $ {round(total_commissions, 2)}")
+    st.write(f"ADRs: They pay 15% Cedular tax on financial income but not Personal Assets: $ {round(taxes, 2)}")
+    st.write(f"(Dividends have not been included, although they pay taxes.)")
 except:
-    st.write(f"Hubo un fallo en la conexión. Actualice la página.")
+    st.write(f"There was a connection failure. Refresh the page.")

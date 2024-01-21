@@ -11,21 +11,20 @@ import numpy as np
 
 
 st.write("""
-# Medias Móviles Trading App
+# Moving average - Trading App
 
-Esta app predice los resultados de una estrategia de trading!
 """)
 
-st.sidebar.header('Modificar parámetros')
+st.sidebar.header('Modify parameters')
 
 def user_input_features():
     global data
     global ticker
 
-    moving_avg = st.sidebar.slider('Media móvil', 10, 100, 50, 10)
-    major_trend = st.sidebar.radio('Tendencia de LP', ('bull market', 'bear market'))
+    moving_avg = st.sidebar.slider('Moving average', 10, 100, 50, 10)
+    major_trend = st.sidebar.radio('Long term Trend', ('bull market', 'bear market'))
     ticker_symbol = st.sidebar.selectbox(
-    "Seleccionar ticker",
+    "Select ticker",
     ["AAPL", "BAC", "AXP", 
     "CVX", "KO",],
     )
@@ -43,8 +42,8 @@ def user_input_features():
 
     data = {
         'Ticker': ticker_symbol,
-        'Media movil': moving_avg,
-        'Tendencia de LP': major_trend,
+        'Moving average': moving_avg,
+        'Long term Trend': major_trend,
     }
     features = pd.DataFrame(data, index=[0])
 
@@ -59,24 +58,24 @@ df_selected = pd.read_csv(ticker)
 
 # Now 'df_apple' is a DataFrame containing the data from 'aapl_1d.csv'
 
-st.subheader('Parámetros ingresados por el usuario')
+st.subheader('User parameters')
 st.write(df)
 
 #st.write(df_apple)
 st.write(df_selected)
 
 st.write("""
-## Precio de cierre (1d)
+## Close (1d)
 """)
 
-ma = f"ma-{data['Media movil']}"
+ma = f"ma-{data['Moving average']}"
 
 # st.line_chart(df_apple[['close', ma]])
 
 st.line_chart(df_selected[['close', ma]])
 
-st.subheader('Análisis en el período seleccionado')
-st.write('Desde: 2018-01-31 hasta: 2023-11-08')
+st.subheader('Análysis')
+st.write('From: 2018-01-31 to: 2023-11-08')
 
 # Assuming apple_daily['days_to_10'] is your data
 #data2 = df_selected['days_to_10']
@@ -105,10 +104,10 @@ st.write('Desde: 2018-01-31 hasta: 2023-11-08')
 
 st.bar_chart(df_selected[['days_to_10']])
 
-st.write('''El gráfico muestra la cantidad de días
-         que son necesarios -en el dataset preseleccionado- 
-         para alcanzar una ganancia de 10 puntos porcentuales 
-         a partir del valor de compra.''')
+st.write('''The graph shows the number of days
+          that are necessary -in the preselected dataset-
+          to achieve a gain of 10 percentage points
+          from the purchase value.''')
 
 #st.subheader('Predicción')
 #st.write(f"El algoritmo logrará alcanzar un 10% de incremento de precios en X días.")
